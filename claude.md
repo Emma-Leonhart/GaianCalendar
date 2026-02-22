@@ -1,21 +1,69 @@
 # gaian-calendar
 
-IMPORTANT
-Do not enter planning-only modes. All thinking must produce files and commits.
-if the scope is not immediately clear make the directory /planning and create many .md files there explaining the planning process instead of using your own planning mode
-please replace the PLACEHOLDER DESCRIPTION section of readme.md with a proper project summary as soon as the purpose of the repo is known. 
-## Project Context
-This is a new, empty repository created on -2026-02-22 - at 12:39 AM using the `new-repo.bat` bootstrapping tool.
-The intent is to use Claude Code to build and populate this project from scratch.
+## What This Is
+
+A pure-Python PyPI library for the **Gaian Calendar** — a perpetual 13-month solar calendar.
+
+- PyPI name: `gaian-calendar`
+- Import name: `gaian_calendar`
+- Display name: **GaianCalendar**
+- Reference implementations: `C:\Users\Immanuelle\Documents\Github\order.life\build.py` and `C:\Users\Immanuelle\AndroidStudioProjects\DateTimeNodaTimeExperiments\GaianNodaTimeWrappers\`
+- Packaging model: mirrors `C:\Users\Immanuelle\Documents\Github\cleanvibe` exactly
 
 ## Workflow Guidelines
-- **Commit early and often.** Every meaningful change should be committed with a clear, descriptive summary that explains *why* the change was made, not just what changed.
-- **Keep this claude.md up to date.** As the project takes shape, update this file with architectural decisions, conventions, dependencies, and anything Claude needs to know to work effectively in this repo. It is not useful to keep the boostrapping project context info in claude.md once a project is up and running.
-- **Do not enter planning mode, please clearly edit the repo with every single architectural decision and even just thoughts you have. Commit them frequently, because commits can be easily undone**
-- **Please regularly update the human aimed readme.md to provide more context for a human user**
 
-## Project Description
-_TODO: Describe what this project is about._
+- **Commit early and often.** Every meaningful change should be committed.
+- **Keep this CLAUDE.md up to date** with architectural decisions and conventions.
+- **Do not enter planning mode** — edit files and commit instead.
+- See `planning/` for design documents (written before implementation).
 
-## Architecture and Conventions
-_TODO: Document key decisions, file structure, and patterns as they emerge._
+## Architecture
+
+- **Flat package layout**: `gaian_calendar/` at repo root
+- **Zero runtime dependencies** (stdlib only: `datetime`, `functools`, `re`)
+- **Python 3.9+ minimum**
+- **pyproject.toml only** (no setup.py)
+
+### Key Files (once implemented)
+
+| File | Purpose |
+|------|---------|
+| `gaian_calendar/__init__.py` | Public re-exports + `__version__` |
+| `gaian_calendar/_data.py` | Month/weekday constants (names, symbols, elements) |
+| `gaian_calendar/_convert.py` | Core calendar math (gregorian↔gaian, leap year) |
+| `gaian_calendar/_format.py` | Pattern-based formatting engine |
+| `gaian_calendar/date.py` | `GaianDate` class |
+| `gaian_calendar/month.py` | `GaianMonth` class |
+| `gaian_calendar/weekday.py` | `GaianWeekday` class |
+| `tests/` | pytest test suite |
+
+### Calendar Math (Core Algorithm)
+
+```python
+# Gregorian → Gaian
+iso_year, iso_week, iso_weekday = d.isocalendar()
+month = (iso_week - 1) // 4 + 1
+day   = ((iso_week - 1) % 4) * 7 + iso_weekday
+gaian_year = iso_year + 10_000
+
+# Gaian → Gregorian
+iso_week = (month - 1) * 4 + (day - 1) // 7 + 1
+iso_weekday = (day - 1) % 7 + 1
+date.fromisocalendar(gaian_year - 10_000, iso_week, iso_weekday)
+```
+
+## Planning Documents
+
+All design decisions are documented in `planning/`:
+1. `01_overview.md` — what we're building and why
+2. `02_calendar_rules.md` — the math and all conversion formulas
+3. `03_api_design.md` — full public API specification
+4. `04_module_structure.md` — file layout and module responsibilities
+5. `05_packaging.md` — pyproject.toml, CI/CD, PyPI publishing
+6. `06_test_cases.md` — ground-truth test cases for validation
+
+## Publishing
+
+- GitHub Actions publishes to PyPI on GitHub release
+- OIDC trusted publishing (no secrets needed)
+- Follows cleanvibe's `.github/workflows/publish.yml` exactly
