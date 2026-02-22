@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gaian-calendar"
+version = "0.1.0"
+description = "Python library for the Gaian Calendar — a perpetual 13-month solar calendar based on ISO week-year arithmetic."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+    { name = "Immanuelle" },
+]
+keywords = ["calendar", "gaian", "date", "alternative calendar", "perpetual calendar", "ISO week", "zodiac"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Utilities",
+]
+
+[project.urls]
+Homepage = "https://github.com/Emma-Leonhart/GaianCalendar"
+Issues = "https://github.com/Emma-Leonhart/GaianCalendar/issues"
