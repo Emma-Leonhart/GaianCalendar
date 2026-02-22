@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(cd /c/Users/Immanuelle/Documents/Github/gaian-calendar && C:/Users/Immanuelle/AppData/Local/Programs/Python/Python313/python.exe -m pytest tests/ -v 2>&1)",
+      "Bash(git add:*)"
     ]
   }
 }
