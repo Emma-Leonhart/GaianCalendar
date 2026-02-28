@@ -3,7 +3,19 @@
     "allow": [
       "Bash(cd:*)",
       "Bash(cd /c/Users/Immanuelle/Documents/Github/gaian-calendar && C:/Users/Immanuelle/AppData/Local/Programs/Python/Python313/python.exe -m pytest tests/ -v 2>&1)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(cd C:\\\\Users\\\\Immanuelle\\\\Documents\\\\Github\\\\gaian-calendar:*)",
+      "Bash(tail:*)",
+      "Bash(cd \"C:\\\\Users\\\\Immanuelle\\\\Documents\\\\Github\\\\gaian-calendar\" && gh run view 22274613187 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\Immanuelle\\\\Documents\\\\Github\\\\gaian-calendar\" && \"C:\\\\Users\\\\Immanuelle\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python313\\\\python.exe\" -m build 2>&1)",
+      "Bash(\"C:\\\\Users\\\\Immanuelle\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python313\\\\python.exe\" -m pip install build 2>&1 && cd \"C:\\\\Users\\\\Immanuelle\\\\Documents\\\\Github\\\\gaian-calendar\" && \"C:\\\\Users\\\\Immanuelle\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python313\\\\python.exe\" -m build 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\Immanuelle\\\\Documents\\\\Github\\\\gaian-calendar\" && gh run watch 22274613187 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\Immanuelle\\\\Documents\\\\Github\\\\gaian-calendar\" && gh release delete v0.1.0 --yes && git push origin :refs/tags/v0.1.0 && git tag -d v0.1.0 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\Immanuelle\\\\Documents\\\\Github\\\\gaian-calendar\" && gh release create v0.1.0 --title \"v0.1.0\" --notes \"Initial release of gaian-calendar — a pure-Python library for the Gaian Calendar, a perpetual 13-month solar calendar based on ISO week-year arithmetic.\" 2>&1)",
+      "Bash(sleep 8:*)",
+      "Bash(cd \"C:\\\\Users\\\\Immanuelle\\\\Documents\\\\Github\\\\gaian-calendar\" && gh run watch 22515348688 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\Immanuelle\\\\Documents\\\\Github\\\\gaian-calendar\" && gh run view 22515348688 2>&1)",
+      "Bash(grep:*)"
     ]
   }
 }
