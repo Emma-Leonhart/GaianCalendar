@@ -3,7 +3,7 @@ requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "gaian-calendar"
+name = "GaianCalendar"
 version = "0.1.0"
 description = "Python library for the Gaian Calendar — a perpetual 13-month solar calendar based on ISO week-year arithmetic."
 readme = "README.md"
