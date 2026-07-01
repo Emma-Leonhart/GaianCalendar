@@ -67,3 +67,9 @@ All design decisions are documented in `planning/`:
 - GitHub Actions publishes to PyPI on GitHub release
 - OIDC trusted publishing (no secrets needed)
 - Follows cleanvibe's `.github/workflows/publish.yml` exactly
+
+## Long command series run in strict order
+When Emma gives a long series of commands, treat it as a long series of commands to be
+executed in relatively STRICT ORDER, one after another, EVEN IF the order seems not to
+make sense or seems inefficient. The sequencing is intentional — she organizes the steps
+so states change in the order she wants. Do not reorder, merge, or skip steps.
