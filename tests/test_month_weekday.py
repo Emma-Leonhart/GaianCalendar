@@ -86,6 +86,29 @@ class TestGaianWeekday:
     def test_not_sabbath_monday(self):
         assert GaianWeekday(1).is_sabbath is False
 
+    def test_from_name_full(self):
+        assert GaianWeekday.from_name("Sunday") == GaianWeekday(7)
+
+    def test_from_name_abbrev(self):
+        assert GaianWeekday.from_name("Sun") == GaianWeekday(7)
+
+    def test_from_name_case_insensitive(self):
+        assert GaianWeekday.from_name("sunday") == GaianWeekday(7)
+        assert GaianWeekday.from_name("MON") == GaianWeekday(1)
+
+    def test_from_name_trailing_dot(self):
+        assert GaianWeekday.from_name("Wed.") == GaianWeekday(3)
+
+    def test_from_name_invalid(self):
+        with pytest.raises(ValueError):
+            GaianWeekday.from_name("Blursday")
+
+    def test_from_name_round_trips_every_weekday(self):
+        for number in range(1, 8):
+            weekday = GaianWeekday(number)
+            assert GaianWeekday.from_name(weekday.name) == weekday
+            assert GaianWeekday.from_name(weekday.abbrev) == weekday
+
     def test_constant_monday(self):
         assert GaianWeekday.MONDAY == GaianWeekday(1)
 

@@ -1,7 +1,7 @@
 """GaianWeekday — a weekday in the Gaian Calendar."""
 from __future__ import annotations
 import functools
-from ._data import get_weekday, WEEKDAYS
+from ._data import get_weekday, get_weekday_by_name, WEEKDAYS
 
 
 @functools.total_ordering
@@ -12,7 +12,7 @@ class GaianWeekday:
 
     def __init__(self, number: int) -> None:
         if not 1 <= number <= 7:
-            raise ValueError(f"Weekday number must be 1–7, got {number}")
+            raise ValueError(f"Weekday number must be 1-7, got {number}")
         self._number = number
 
     # ------------------------------------------------------------------
@@ -43,6 +43,21 @@ class GaianWeekday:
     def is_sabbath(self) -> bool:
         """Friday (5), Saturday (6), and Sunday (7) are sabbath days."""
         return self._number >= 5
+
+    # ------------------------------------------------------------------
+    # Alternate constructors
+    # ------------------------------------------------------------------
+
+    @classmethod
+    def from_name(cls, name: str) -> GaianWeekday:
+        """Parse a weekday by full name or abbreviation (case-insensitive).
+
+        The counterpart of :meth:`GaianMonth.from_name`. Without it, a consumer parsing a
+        weekday out of a config file has no supported route from "Sunday" to 7, and either
+        restates the seven names locally or reaches into ``_data``.
+        """
+        data = get_weekday_by_name(name)
+        return cls(data["number"])
 
     # ------------------------------------------------------------------
     # Dunder methods

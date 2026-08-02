@@ -16,7 +16,7 @@ print(today.format("WWWW, MMMM d, yyyy GE"))  # "Sunday, Aquarius 22, 12026 GE"
 
 ## Status
 
-**Pre-release — planning phase.** See [`planning/`](planning/) for design documents.
+**Published — 0.1.0 on PyPI**, 137 passing tests. See [`planning/`](planning/) for the design documents.
 
 ---
 
@@ -37,10 +37,10 @@ The 13 months in order: Sagittarius · Capricorn · Aquarius · Pisces · Aries 
 ## Installation
 
 ```bash
-pip install gaian-calendar
+pip install GaianCalendar
 ```
 
-*(Not yet published — coming soon)*
+The distribution is `GaianCalendar`; `gaian-calendar` is not a name on PyPI.
 
 ---
 
@@ -55,18 +55,18 @@ d = GaianDate.today()
 
 # From Gregorian
 d = GaianDate.from_gregorian(date(2026, 2, 22))
-print(d)                  # "Aquarius 22, 12026 GE"
+print(d)                  # "Capricorn 28, 12026 GE"
 print(d.to_gregorian())   # 2026-02-22
 
 # Properties
 print(d.year)             # 12026
-print(d.month)            # 3
-print(d.day)              # 22
-print(d.month_name)       # "Aquarius"
-print(d.month_symbol)     # "♒"
+print(d.month)            # 2
+print(d.day)              # 28
+print(d.month_name)       # "Capricorn"
+print(d.month_symbol)     # "♑"
 print(d.weekday_name)     # "Sunday"
 print(d.weekday_symbol)   # "☉"
-print(d.day_of_year)      # 78
+print(d.day_of_year)      # 56
 print(d.is_leap_year)     # True
 
 # Arithmetic

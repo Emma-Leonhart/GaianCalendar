@@ -29,7 +29,7 @@ WEEKDAYS: list[dict] = [
     {"number": 7, "name": "Sunday",    "abbrev": "Sun", "symbol": "☉", "planet": "Sun"},
 ]
 
-# Ordinal suffixes for days 1–28
+# Ordinal suffixes for days 1-28
 _ORDINAL_SUFFIXES = {1: "st", 2: "nd", 3: "rd"}
 
 def ordinal(n: int) -> str:
@@ -52,7 +52,7 @@ def number_word(n: int) -> str:
     """Return word form: 1 → 'First', 15 → 'Fifteenth'."""
     if 1 <= n <= 28:
         return _NUMBER_WORDS[n]
-    raise ValueError(f"number_word only supports 1–28, got {n}")
+    raise ValueError(f"number_word only supports 1-28, got {n}")
 
 # Fast lookup maps
 _MONTH_BY_NUMBER: dict[int, dict] = {m["number"]: m for m in MONTHS}
@@ -62,6 +62,10 @@ for _m in MONTHS:
     _MONTH_BY_NAME[_m["abbrev"].lower()] = _m
 
 _WEEKDAY_BY_NUMBER: dict[int, dict] = {w["number"]: w for w in WEEKDAYS}
+_WEEKDAY_BY_NAME: dict[str, dict] = {}
+for _w in WEEKDAYS:
+    _WEEKDAY_BY_NAME[_w["name"].lower()] = _w
+    _WEEKDAY_BY_NAME[_w["abbrev"].lower()] = _w
 
 def get_month(number: int) -> dict:
     if number not in _MONTH_BY_NUMBER:
@@ -78,3 +82,9 @@ def get_weekday(number: int) -> dict:
     if number not in _WEEKDAY_BY_NUMBER:
         raise ValueError(f"Invalid weekday number: {number}")
     return _WEEKDAY_BY_NUMBER[number]
+
+def get_weekday_by_name(name: str) -> dict:
+    key = name.lower().rstrip(".")
+    if key not in _WEEKDAY_BY_NAME:
+        raise ValueError(f"Unknown weekday name: {name!r}")
+    return _WEEKDAY_BY_NAME[key]

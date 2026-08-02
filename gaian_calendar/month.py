@@ -12,7 +12,7 @@ class GaianMonth:
 
     def __init__(self, number: int) -> None:
         if not 1 <= number <= 14:
-            raise ValueError(f"Month number must be 1–14, got {number}")
+            raise ValueError(f"Month number must be 1-14, got {number}")
         self._number = number
 
     # ------------------------------------------------------------------

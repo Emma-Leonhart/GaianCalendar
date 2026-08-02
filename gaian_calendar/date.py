@@ -51,11 +51,11 @@ class GaianDate:
 
     @classmethod
     def from_day_of_year(cls, year: int, doy: int) -> GaianDate:
-        """Construct from a Gaian year and day-of-year (1–364 or 1–371 in leap years)."""
+        """Construct from a Gaian year and day-of-year (1-364 or 1-371 in leap years)."""
         leap = is_leap_year(year)
         max_doy = 371 if leap else 364
         if not 1 <= doy <= max_doy:
-            raise ValueError(f"Day of year {doy} out of range (1–{max_doy}) for year {year}")
+            raise ValueError(f"Day of year {doy} out of range (1-{max_doy}) for year {year}")
         if doy <= 364:
             month = (doy - 1) // 28 + 1
             day = (doy - 1) % 28 + 1
@@ -118,7 +118,7 @@ class GaianDate:
 
     @property
     def day_of_year(self) -> int:
-        """1–364, or up to 371 in leap years."""
+        """1-364, or up to 371 in leap years."""
         return day_of_year(self._month, self._day)
 
     @property
